@@ -14,17 +14,24 @@ int main() {
     int i, old_i;
     long l, old_l;
 
-    c = 0;
+    c = s = i = l = 0;
 
-    while (1) {          // repeat the following code in { .... } endless
-        old_c = c;       // remember previous value
-        c = c + 1;       // increase c by 1, you may also use the short form: c++;
-        if (old_c > c) { // execute the following code in { ... } if condition is true
+    while (1) {
+        old_c = c;
+        old_s = s;
+        old_i = i;
+        old_l = l;
+        c = c + 1;
+        s = s + 1;
+        i = i + 1;
+        l = l + 1;
+        if (old_c > c)
             printf("char  overflow %d -> %d \n", old_c, c);
-        }
-        // printf format strings:
-        // char, short, int: "%d"
-        // long: "%ld"
-        // unsigned int: "%u"
+        if (old_s > s)
+            printf("short overflow %d -> %d \n", old_s, s);
+        if (old_i > i)
+            printf("int   overflow %d -> %d \n", old_i, i);
+        if (old_l > l)
+            printf("long  overflow %ld -> %ld \n", old_l, l);
     }
 }

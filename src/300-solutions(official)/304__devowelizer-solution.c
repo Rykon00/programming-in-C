@@ -10,25 +10,23 @@ in a table how each character shall be replaced by another one.
 
 #include <stdio.h>
 
-int main()
-{
+int main() {
     char txt[1000];
     int i, j;
 
     printf("Please enter your text:");
-    gets(txt);   // Risk of buffer overflow!
+    gets(txt); // Risk of buffer overflow!
 
     // Efficient solution for removing vowels:
-    i=j=0;
-    do 
-    {
+    i = j = 0;
+    do {
         // skip vowels with j counter
-        while(txt[j]=='a' || txt[j]=='e' || txt[j]=='i' || txt[j]=='o' || txt[j]=='u' ||
-              txt[j]=='A' || txt[j]=='E' || txt[j]=='I' || txt[j]=='O' || txt[j]=='U')
+        while (txt[j] == 'a' || txt[j] == 'e' || txt[j] == 'i' || txt[j] == 'o' || txt[j] == 'u' ||
+               txt[j] == 'A' || txt[j] == 'E' || txt[j] == 'I' || txt[j] == 'O' || txt[j] == 'U')
             j++;
         // copy char from position j to position i, thus skipping vowels (j >= i)
-        txt[i++]=txt[j++];
-    } while(txt[i-1]);   // -1, because also zero byte needs to be copied.
-    
+        txt[i++] = txt[j++];
+    } while (txt[i - 1]); // -1, because also zero byte needs to be copied.
+
     printf("%s", txt);
 }

@@ -1,4 +1,4 @@
-/* number_puzzle.c 
+/* number_puzzle.c
    Write a number puzzle program by completing the TO DOs
    TO DO 1: Initialize the puzzle, such that the numbers 1 to 15 are randomly distributed in the array.
             -1 should mark the empty field.
@@ -23,24 +23,23 @@
 
 #include <stdio.h>
 
-int main()
-{
-   int puzzle[4][4];
-   char key;            // This holds the current key entered by the player.
-   char sorted=0;       // This flag indicates whether the field is sorted.  
-   int i, j;
+int main() {
+    int puzzle[4][4];
+    char key;        // This holds the current key entered by the player.
+    char sorted = 0; // This flag indicates whether the field is sorted.
+    int i, j;
 
-   while(!sorted) {
+    while (!sorted) {
 
-      /* Output */
-      for(i=0; i<4; i++) {
-         for(j=0; j<4; j++) {
-             printf("%2d ", puzzle[i][j]);
-         }
-         printf("\n");
-      }
-    
-      printf("move into direction?");
-      key=getchar();      
-   }
+        /* Output */
+        for (i = 0; i < 4; i++) {
+            for (j = 0; j < 4; j++) {
+                printf("%2d ", puzzle[i][j]);
+            }
+            printf("\n");
+        }
+
+        printf("move into direction?");
+        key = getchar();
+    }
 }

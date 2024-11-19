@@ -16,8 +16,6 @@
 //          Allow in addition the option '-v' (verbose), to switch on output of intermediate results
 
 #include <stdio.h>
-void ackermannFunction() {
-}
 
 int main() {
     int n, m, result;
