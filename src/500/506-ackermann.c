@@ -1,4 +1,4 @@
-// Ackermann: calculate the Ackermann function 
+// Ackermann: calculate the Ackermann function
 // The mathematical Ackermann function is defined as follows:
 //
 //    A(m,n) =   n+1              if m=0
@@ -8,7 +8,7 @@
 // TO DO 1: Write a function that calculates the Ackermann function according to the definition above
 //          Test the program with very small values first!
 // TO DO 2: Extend the function such that it counts the number of functions calls (use a global variable counter)
-//          Print the function arguments and current count every x function calls. 
+//          Print the function arguments and current count every x function calls.
 // TO DO 3: Count the amount of recursively called functions (which are not yet completed) and print them as well
 // TO DO 4: Use static variables in ackermann for counting rather than global variables.
 // TO DO 5: Optional: Visualize the current recursion depth with bars of ascii-characters: xxxxxxxxxxxxxxxxxx
@@ -16,15 +16,16 @@
 //          Allow in addition the option '-v' (verbose), to switch on output of intermediate results
 
 #include <stdio.h>
+void ackermannFunction() {
+}
 
-int main()
-{
-   int n, m, result;
+int main() {
+    int n, m, result;
 
-   printf("Value for m: ");
-   scanf("%d", &m);
-   printf("Value for n: ");
-   scanf("%d", &n);
- 
-   // TO DO: Call ackermann function
+    printf("Value for m: ");
+    scanf("%d", &m);
+    printf("Value for n: ");
+    scanf("%d", &n);
+
+    // TO DO: Call ackermann function
 }
