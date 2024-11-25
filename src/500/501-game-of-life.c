@@ -27,49 +27,121 @@ see: http://en.wikipedia.org/wiki/Conway's_Game_of_Life
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include <unistd.h> // For usleep function
 
-// Global 2-dim-array which contains the cells
-char cells[30][50];
-
-// TO DO: initialize cells, set most to 0, some to 1
-void initialize_cells() {
+// TO DO: DONE!!! initialize cells, set most to 0, some to 1
+void initialize_cells(char cells[30][50]) {
     for (int i = 0; i < 30; i++) {
         for (int j = 0; j < 50; j++) {
-            // TO DO ...
+            if (rand() % 10 == 0) {
+                cells[i][j] = 'X';
+            } else {
+                cells[i][j] = ' ';
+            }
         }
     }
 }
 
-// TO DO: Write output function to show the cells
-void display_cells() {
-    system("CLS"); // sends Clear screen to the console (Windows), Linux: "clear"
-                   // TO DO
+// TO DO: DONE!!! Write a function that counts the occupied cells
+int count_cells(char cells[30][50]) {
+    int count = 0;
+    for (int i = 0; i < 30; i++) {
+        for (int j = 0; j < 50; j++) {
+            if (cells[i][j] == 'X') { // Assuming 'X' represents an occupied cell
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
+// TO DO: DONE!!! Write output function to print the cells
+void display_cells(char cells[30][50]) {
+    for (int i = 0; i < 30; i++) {
+        for (int j = 0; j < 50; j++) {
+            printf("%c", cells[i][j]);
+        }
+        printf("\n");
+    }
+    // Counted Cells output & additional information
+    printf("Number of Cells alive: %i\n", count_cells(cells));
+    if (count_cells(cells) == 0) {
+        printf("Population extinct!\n");
+    } else {
+        printf("Population is still alive!\n");
+    }
+    usleep(500000);
 }
 
 // TO DO: Write a function to calculate the next evolution step
-void evolution_step() {
-    // TO DO: Use this array for the calculation of the next step
-    char cells_helper[30][50];
-}
+void evolution_step(char cells[30][50]) {
+    char cellsCopy[30][50];
+    int x, y;
+    // creating duplicate of cells[][]
+    for (y = 0; y < 30; y++) {
+        for (x = 0; x < 50; x++) {
+            cellsCopy[y][x] = cells[y][x];
+        }
+    }
 
-// TO DO: Write a function that counts the occupied cells
-int count_cells() {
+    int offsets[8][2] = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
+    // iterating the whole cells[][]
+    for (y = 0; y < 30; y++) {
+        for (x = 0; x < 50; x++) {
+            int aliveCells = 0;
+
+            // Check surrounding cells of each cell in cells[][]
+            for (int k = 0; k < 8; k++) {
+                int NIx = x + offsets[k][1];
+                int NIy = y + offsets[k][0];
+
+                if (NIx >= 0 && NIx < 50 && NIy >= 0 && NIy < 30) {
+                    if (cells[NIy][NIx] == 'X') {
+                        aliveCells++;
+                    }
+                }
+            }
+
+            // Apply the rules of the game
+            if (cells[y][x] == 'X') { // Cell is currently alive
+                if (aliveCells < 2 || aliveCells > 3) {
+                    cellsCopy[y][x] = ' '; // Cell dies
+                }
+            } else { // Cell is currently dead
+                if (aliveCells == 3) {
+                    cellsCopy[y][x] = 'X'; // Cell becomes alive
+                }
+            }
+        }
+    }
+
+    // Copy the new state back to the original cells array
+    for (y = 0; y < 30; y++) {
+        for (x = 0; x < 50; x++) {
+            cells[y][x] = cellsCopy[y][x];
+        }
+    }
 }
 
 // Main program
 int main() {
-    initialize_cells();
+    char cells[30][50];
+    initialize_cells(cells);
 
     while (1) {
-        display_cells();
+        display_cells(cells);
 
         // Leave loop if there are no more occupied cells
-        if (count_cells() == 0)
+        if (count_cells(cells) == 0) {
             break;
+        }
 
+        // input for next step
         printf("Press enter");
-        getchar();
+        // getchar();
 
-        evolution_step();
+        // next evolution step
+        evolution_step(cells);
     }
 }
