@@ -13,8 +13,15 @@ int main() {
         printf("%3d ", i);
         for (j = 0; j < 16; j = j + 1) {
             c = i + j;
-            printf("%c", c);
+            if (c >= 127) {
+                printf(".");
+            } else if (c <= 31) {
+                printf(".");
+            } else {
+                printf("%c", c);
+            }
         }
+        printf("%c", 7);
         printf("\n");
     }
     getchar();

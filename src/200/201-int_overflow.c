@@ -18,7 +18,7 @@ int main() {
 
     while (1) {          // repeat the following code in { .... } endless
         old_c = c;       // remember previous value
-        c = c + 1;       // increase c by 1, you may also use the short form: c++;
+        c += 1;          // increase c by 1, you may also use the short form: c++;
         if (old_c > c) { // execute the following code in { ... } if condition is true
             printf("char  overflow %d -> %d \n", old_c, c);
         }

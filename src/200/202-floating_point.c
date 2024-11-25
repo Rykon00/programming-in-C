@@ -18,11 +18,15 @@ int main() {
     while (1) {
         old_f = f;
         old_d = d;
-        f = f + 1;
-        d = d + 1;
+        f += 1000000;
+        d += 1000000;
 
-        if (old_f >= f)
+        if (old_f >= f) {
             printf("float limit %f -> %f \n", old_f, f);
+        }
         // if(old_d>=d) printf("double limit %lf -> %lf \n", old_d, d);
+        if (old_d >= d) {
+            printf("double limit %lf -> %lf \n", old_d, f);
+        }
     }
 }
