@@ -32,12 +32,13 @@ see: http://en.wikipedia.org/wiki/Conway's_Game_of_Life
 
 // TO DO: DONE!!! initialize cells, set most to 0, some to 1
 void initialize_cells(char cells[30][50]) {
+    srand(time(NULL)); // Seed the random number generator with the current time
     for (int i = 0; i < 30; i++) {
         for (int j = 0; j < 50; j++) {
-            if (rand() % 10 == 0) {
-                cells[i][j] = 'X';
+            if (rand() % 10 == 0) { // Use rand() to generate random numbers
+                cells[i][j] = 'X';  // 10% chance to be 'X'
             } else {
-                cells[i][j] = ' ';
+                cells[i][j] = ' '; // 90% chance to be ' '
             }
         }
     }
@@ -139,7 +140,6 @@ int main() {
 
         // input for next step
         printf("Press enter");
-        // getchar();
 
         // next evolution step
         evolution_step(cells);
