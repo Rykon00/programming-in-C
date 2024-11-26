@@ -14,8 +14,8 @@ int main() {
     char txt[1000];
     int i;
 
-    printf("Please enter your text:");
-    gets(txt);
+    printf("Please enter your text: ");
+    fgets(txt, sizeof(txt), stdin);
 
     i = 0;
     while (txt[i] != 0) {
