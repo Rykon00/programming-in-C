@@ -17,13 +17,43 @@
 
 #include <stdio.h>
 
-int main() {
-    int n, m, result;
+// Ackermann function with static variables for counting
+int ackermannFunction(int m, int n) {
+    static int ackermannCounter = 0;
+    static int activeCalls = 0;
 
+    ackermannCounter += 1;
+    activeCalls += 1;
+
+    // Print the function arguments and current count every 1000 function calls
+    if (ackermannCounter % 1000 == 0) {
+        printf("Function call %d: A(%d, %d), Active calls: %d\n", ackermannCounter, m, n, activeCalls);
+    }
+
+    int result;
+    if (m == 0) {
+        result = n + 1;
+    } else if (m > 0 && n == 0) {
+        result = ackermannFunction(m - 1, 1);
+    } else if (m > 0 && n > 0) {
+        result = ackermannFunction(m - 1, ackermannFunction(m, n - 1));
+    } else {
+        result = -1; // This line should never be reached
+    }
+
+    activeCalls -= 1;
+    return result;
+}
+
+int main(int argc, char *argv[]) {
+    int n, m, results;
     printf("Value for m: ");
     scanf("%d", &m);
     printf("Value for n: ");
     scanf("%d", &n);
 
-    // TO DO: Call ackermann function
+    results = ackermannFunction(m, n);
+    printf("Ackermann(%d, %d) = %d\n", m, n, results);
+
+    return 0;
 }
