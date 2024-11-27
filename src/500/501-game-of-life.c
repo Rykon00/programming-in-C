@@ -59,9 +59,12 @@ int count_cells(char cells[30][50]) {
 
 // TO DO: DONE!!! Write output function to print the cells
 void display_cells(char cells[30][50]) {
-    // Clear the terminal screen
-    printf("\033[H\033[J");
-
+    // add spacer before each print, to better differentiate between prints
+    for (int i = 0; i < 10; i++) {
+        printf("\n");
+    }
+    // clean line
+    printf("00000000000000000000000000000000000000000000000000\n");
     // Print the cells
     for (int i = 0; i < 30; i++) {
         for (int j = 0; j < 50; j++) {
@@ -69,10 +72,8 @@ void display_cells(char cells[30][50]) {
         }
         printf("\n");
     }
-
-    // Move the cursor to the bottom line
-    printf("\033[%d;%dH", 32, 0); // Move cursor to row 32, column 0 (assuming 30 rows of cells + 2 lines for spacing)
-
+    // clean line
+    printf("00000000000000000000000000000000000000000000000000\n");
     // Print additional information
     printf("Number of Cells alive: %i\n", count_cells(cells));
     if (count_cells(cells) == 0) {
@@ -148,7 +149,7 @@ int main() {
         }
 
         // input for next step
-        printf("Press enter");
+        // printf("Press enter");
 
         // next evolution step
         evolution_step(cells);
