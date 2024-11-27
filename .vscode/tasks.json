@@ -26,34 +26,18 @@
         },
         {
             "type": "shell",
-            "label": "C/C++: gcc.exe build and run active file (cppbuild)",
-            "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe",
-            "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "&&",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
-            ],
+            "label": "Run Program (Integrated Terminal)",
+            "command": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "args": [],
             "options": {
-                "cwd": "${fileDirname}",
-                "shell": {
-                    "executable": "cmd.exe",
-                    "args": [
-                        "/c"
-                    ]
-                }
+                "cwd": "${fileDirname}"
             },
-            "problemMatcher": [
-                "$gcc"
-            ],
+            "problemMatcher": [],
             "group": {
-                "kind": "build",
-                "isDefault": false
+                "kind": "test",
+                "isDefault": true
             },
-            "detail": "Compile and run the active file in the integrated terminal."
+            "detail": "Run the compiled program in the integrated terminal."
         }
     ]
 }
