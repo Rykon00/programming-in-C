@@ -44,7 +44,7 @@ void initialize_cells(char cells[30][50]) {
     }
 }
 
-// TO DO: DONE!!! Write a function that counts the occupied cells
+// Function to count the occupied cells
 int count_cells(char cells[30][50]) {
     int count = 0;
     for (int i = 0; i < 30; i++) {
@@ -59,20 +59,29 @@ int count_cells(char cells[30][50]) {
 
 // TO DO: DONE!!! Write output function to print the cells
 void display_cells(char cells[30][50]) {
+    // Clear the terminal screen
+    printf("\033[H\033[J");
+
+    // Print the cells
     for (int i = 0; i < 30; i++) {
         for (int j = 0; j < 50; j++) {
             printf("%c", cells[i][j]);
         }
         printf("\n");
     }
-    // Counted Cells output & additional information
+
+    // Move the cursor to the bottom line
+    printf("\033[%d;%dH", 32, 0); // Move cursor to row 32, column 0 (assuming 30 rows of cells + 2 lines for spacing)
+
+    // Print additional information
     printf("Number of Cells alive: %i\n", count_cells(cells));
     if (count_cells(cells) == 0) {
         printf("Population extinct!\n");
     } else {
         printf("Population is still alive!\n");
     }
-    usleep(500000);
+
+    usleep(500000); // Add a delay of 500 milliseconds
 }
 
 // TO DO: Write a function to calculate the next evolution step
