@@ -1,5 +1,5 @@
- /* Variables and memory
-   have a look the variables in your previous programs, e.g. address_list.c
+/* Variables and memory
+   have a look at the variables in your previous programs, e.g. address_list.c
 
    TO DO 1: Use sizeof to determine how much memory different types require in memory.
    TO DO 2: Also consider arrays, structs, enums and unions.
@@ -9,19 +9,11 @@
    TO DO 6: What about addresses of local variables in recursive functions (e.g. hanoi.c)?
    TO DO 7: Can you find int variables stored at uneven addresses? How do you judge the result?
    TO DO 8: What is the size of the following struct? Why? Can it be reduced?
-*/
 
 struct test {
-	char a;  
-	int b;
-	char c;
-	int d;
-}; 
-
-struct test my_test;
-
-
-
-
-   
-
+        char a;
+        int b;
+        char c;
+        int d;
+};
+*/
