@@ -1,10 +1,10 @@
 /* Malloc_eratosthenes.c
 
-   TO DO 1: Change the Eratosthenes program such that 'max' is a variable and can be entered by the user.
+   TO DO 1: DONE!!! Change the Eratosthenes program such that 'max' is a variable and can be entered by the user.
             Use malloc and pointers to allocate the memory for is_prime depending on max.
             Do not forget to use 'free' to free the memory afterwards.
-   TO DO 2: What happens if you don't use free and if you allocate the memory several times, e.g.
-            by putting the whole content of the main function in a loop? 
+   TO DO 2: DONE!!! What happens if you don't use free and if you allocate the memory several times, e.g.
+            by putting the whole content of the main function in a loop?
             - How long can you allocate memory?
             - print the addresses where the memory is allocated.
             - Have a look at the task manager and monitor the memory usage of your program (process).
@@ -14,28 +14,39 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 
-#define Max 100 
+int main() {
+    int Max = 100;
+    int i, j;
+    unsigned char *is_prime;
 
-int main()
-{
-   int i, j;
-   unsigned char is_prime[Max]; 
+    // input to read Max
+    printf("Upper limit, up until this number primes will be calculated: \n");
+    scanf("%d", &Max);
 
-   /* Initialize Array */
-   for(i=0; i<Max; i=i+1) 
-      is_prime[i]=1;
-	
-   for (i = 2; i <Max; ++i)  
-      for (j= 2*i; j <Max; j=j+i)
-         is_prime[j] = 0;
+    // Allocate memory for the is_prime array
+    is_prime = (unsigned char *)malloc(Max * sizeof(unsigned char));
+    if (is_prime == NULL) {
+        printf("Memory allocation failed\n");
+        return 1;
+    }
 
-   printf("Prime numbers are: ");
-   for(i=2; i<Max; i++)
-      if(is_prime[i]>0)
-         printf("%d ",i);  
+    /* Initialize Array */
+    for (i = 0; i < Max; i++) {
+        is_prime[i] = 1;
+    }
+
+    for (i = 2; i < Max; ++i) {
+        for (j = 2 * i; j < Max; j += i)
+            is_prime[j] = 0;
+    }
+
+    printf("Prime numbers are: ");
+    for (i = 2; i < Max; i++)
+        if (is_prime[i] > 0)
+            printf("%d; ", i);
+
+    // free the allocated memory
+    free(is_prime);
 }
-
-
-   
-
