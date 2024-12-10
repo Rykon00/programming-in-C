@@ -27,9 +27,9 @@ void draw_function(double (*f)(double), double (*g)(double), struct range *xrang
    char fg;
    
    for(y=yrange->max; y>=yrange->min; y-=yrange->step) {
-      for(x=xrange->min; x<xrange->max; x+=xrange->step) {
-		  fg=((*f)(x)>=y && (*f)(x)<y+yrange->step);
-		  fg=((*g)(x)>=y && (*g)(x)<y+yrange->step)? (fg?'$': '|'): (fg? 'S':' ');
+      for(x=xrange->min; x<=xrange->max; x+=xrange->step) {
+		  fg=((*f)(x)>=y && f(x)<y+yrange->step);     // (*f)(....) or f(...) - both do the same
+		  fg=(g!=NULL && (*g)(x)>=y && (*g)(x)<y+yrange->step)? (fg?'$': '|'): (fg? 'S':' ');
 		  // Dereferencing *-operator is optional:
 		  // f(x) and g(x) would also work
           printf("%c", fg);
@@ -41,23 +41,22 @@ void draw_function(double (*f)(double), double (*g)(double), struct range *xrang
 // Mathematical function to be displayed 
 double my_function1(double x)
 {
-     return 1.5*sin(x);
+     return 1.2*sin(x);
 }
 
 double my_function2(double x)
 {
-     return x/5.;
+     return x/8.;
 }
-
 
 int main()
 {
      double (*fn_ptr1)(double);     // Defines a variable pointing to a function
-	 struct range xrange = { -10, 10, 0.5 };
-	 struct range yrange = { -2, 2, 0.2 };
+	struct range xrange = { -10, 10, 0.2 };
+	struct range yrange = { -1.5, 1.5, 0.1 };
 
-     fn_ptr1=my_function1;          // "Umweg" über Zeigervariable hier nur zur Veranschaulichung
+     fn_ptr1=my_function1;  // Use additional pointer variable to show principle (not really necessary here)
      draw_function(fn_ptr1, my_function2, &xrange, &yrange); 
 
-	 getchar();
+	getchar();
 }

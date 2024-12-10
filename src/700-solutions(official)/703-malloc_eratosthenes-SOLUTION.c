@@ -1,4 +1,4 @@
-/* Malloc_eratosthenes.c
+ /* Malloc_eratosthenes.c
 
    TO DO 1: Change the Eratosthenes program such that 'max' is a variable and can be entered by the user.
             Use malloc and pointers to allocate the memory for is_prime depending on max.
