@@ -8,5 +8,8 @@
 		"files.associations": {
 			"stdio.h": "c"
 		}
-	}
+    },
+    "extensions": {
+        "recommendations": []
+    }
 }

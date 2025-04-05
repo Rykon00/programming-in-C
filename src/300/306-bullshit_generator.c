@@ -10,24 +10,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
-  char verbs[][20] = {"benchmark", "exploit",  "facilitate",  "generate",
-                      "implement", "leverage", "maximize",    "mesh",
-                      "monetize",  "optimize", "orchestrate", "redefine"};
-  char nouns[][20] = {"action-items",    "applications",  "bandwidth",
-                      "communities",     "e-business",    "experiences",
+int main()
+{
+  char verbs[][20] = {"benchmark", "exploit", "facilitate", "generate",
+                      "implement", "leverage", "maximize", "mesh",
+                      "monetize", "optimize", "orchestrate", "redefine"};
+  char nouns[][20] = {"action-items", "applications", "bandwidth",
+                      "communities", "e-business", "experiences",
                       "infrastructures", "methodologies", "partnerships",
-                      "synergies",       "solutions",     "technologies"};
+                      "synergies", "solutions", "technologies"};
   char adjectives[][20] = {
-      "bleeding-edge",    "collaborative",   "cross-platform", "distributed",
-      "efficient",        "global",          "holistic",       "innovative",
+      "bleeding-edge", "collaborative", "cross-platform", "distributed",
+      "efficient", "global", "holistic", "innovative",
       "mission-critical", "next-generation", "out-of-the-box", "user-centric"};
   int number, v, n, a;
 
   printf("How much bullshit do you need?");
   scanf("%d", &number);
 
-  while (number > 0) {
+  while (number > 0)
+  {
     v = rand() % 12;
     n = rand() % 12;
     a = rand() % 12;
