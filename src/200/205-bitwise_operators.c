@@ -11,14 +11,14 @@
 #include <stdio.h>
 
 int main() {
-    unsigned int n;
+  unsigned int n;
 
-    printf("Please enter an integer number:");
-    scanf("%u", &n); // Input unsigned integer from console
+  printf("Please enter an integer number:");
+  scanf("%u", &n);  // Input unsigned integer from console
 
-    printf("\n Binary representation: ");
-    while (n > 0) {
-        printf("%d", n & 1);
-        n = n >> 1;
-    }
+  printf("\n Binary representation: ");
+  while (n > 0) {
+    printf("%d", n & 1);
+    n = n >> 1;
+  }
 }

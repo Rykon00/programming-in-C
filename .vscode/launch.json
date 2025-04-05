@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "C/C++: gcc build and debug active file (cppbuild)",
+            "name": "Launch C Program",
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
@@ -20,8 +20,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "C/C++: gcc.exe build active file (cppbuild)",
-            "internalConsoleOptions": "neverOpen"
+            "preLaunchTask": "Build and Run C Program" // Verweis auf den Task in tasks.json
         }
     ]
 }

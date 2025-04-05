@@ -2,42 +2,33 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "type": "cppbuild",
-            "label": "C/C++: gcc.exe build active file (cppbuild)",
-            "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe",
+            "label": "Build and Run C Program",
+            "type": "shell",
+            "command": "gcc",
             "args": [
-                "-fdiagnostics-color=always",
-                "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
-            ],
-            "options": {
-                "cwd": "${fileDirname}"
-            },
-            "problemMatcher": [
-                "$gcc"
+                "${fileDirname}/${fileBasenameNoExtension}.exe"
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "detail": "Generated task by Debugger."
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Compile the active C file."
         },
         {
+            "label": "Run Program",
             "type": "shell",
-            "label": "Run Program (Integrated Terminal)",
             "command": "${fileDirname}\\${fileBasenameNoExtension}.exe",
-            "args": [],
-            "options": {
-                "cwd": "${fileDirname}"
-            },
-            "problemMatcher": [],
             "group": {
                 "kind": "test",
                 "isDefault": true
             },
-            "detail": "Run the compiled program in the integrated terminal."
+            "problemMatcher": [],
+            "detail": "Run the compiled program."
         }
     ]
 }

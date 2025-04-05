@@ -10,7 +10,7 @@ int main() {
 
     printf("Please enter your name:\n");
     fgets(name, sizeof(name), stdin);
-    name[strcspn(name, "\n")] = '\0'; // Remove newline character
+    name[strcspn(name, "\n")] = '\0';  // Remove newline character
 
     for (i = 0; i < 10; i++) {
         p1 = rand() % strlen(name);
